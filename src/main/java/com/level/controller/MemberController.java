@@ -25,4 +25,9 @@ public class MemberController {
     public String error() {
         return error();
     }
+
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
+    }
 }
