@@ -43,7 +43,6 @@ jobs:
         port: ${{ secrets.PORT }}
         source: "./build/libs/*.war"
         target: "/root"
-        
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.4        
       with:
