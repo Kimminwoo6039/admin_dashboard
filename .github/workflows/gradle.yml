@@ -41,7 +41,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: "./build/libs/*.war"
+        source: "build/libs/*.war"
         target: "/root"
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.4        
