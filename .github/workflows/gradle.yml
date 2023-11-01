@@ -41,10 +41,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        rm: true
         source: "dist/*.war"
         target: "/root"
-        strip_components: 1
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.4        
       with:
