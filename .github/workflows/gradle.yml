@@ -42,7 +42,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         source: "./build/libs/*.war"
         target: "/root"
-        strip_components: 2
+        
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.4        
       with:
