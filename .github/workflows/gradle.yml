@@ -34,11 +34,26 @@ jobs:
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
         arguments: build
-       # 전송할 파일을 담을 디렉토리 생성
-    - name: Make Directory for deliver
-      run: cd build
-    - name: Make Directory for deliver
-      run: ls -al
+      ## 빌드 아티팩트 확인
+    - name: Show structure of artifact files
+      run: ls -ahl ./build/libs/*.war
+        ## 빌드 아티팩트 업로드
+    - name: Upload build artifact for job
+      uses: actions/upload-artifact@v3
+      with:
+        ## 업로드 키 값 (임의지정)
+        name: project_artifact
+        ## Gradle의 경우
+        path: "./build/libs/*.war"
+      ## 아티팩트 전송을 위한 임시 공간
+    - name: Create distribute
+      run: mkdir ~/dist
+    ## 빌드 한 아티팩트 다운로드
+    - name: Download build artifact for job
+      uses: actions/download-artifact@v3
+      with:
+        name: project_artifact
+        path: dist
     - name: Deploy Prod use SCP
       uses: appleboy/scp-action@master
       with:
@@ -46,8 +61,10 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: "././build/libs/*.war"
+        rm: true
+        source: "dist/*.war"
         target: "/root"
+        strip_components: 1
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.4        
       with:
