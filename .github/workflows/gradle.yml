@@ -35,10 +35,6 @@ jobs:
       with:
         arguments: build
        # 전송할 파일을 담을 디렉토리 생성
-    - name: Make Directory for deliver
-      run: pwd
-    - name: Make Directory for deliver
-      run: ls -al
     - name: Deploy Prod use SCP
       uses: appleboy/scp-action@master
       with:
