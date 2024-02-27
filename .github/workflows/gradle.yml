@@ -56,3 +56,4 @@ jobs:
           cd build/libs/
           cp level-0.0.1-SNAPSHOT.war /root
           rm -rf /root/build
+          ./test.sh
