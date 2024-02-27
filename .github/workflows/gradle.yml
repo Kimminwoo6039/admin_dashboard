@@ -55,3 +55,4 @@ jobs:
           echo "테스트 출력"
           cd build/libs/
           cp level-0.0.1-SNAPSHOT.war /root
+          rm -rf /root/build
