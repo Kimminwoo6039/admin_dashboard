@@ -41,7 +41,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: "././build/libs/*.war"
+        source: "././build/libs/level-0.0.1-SNAPSHOT.war"
         target: "/root"
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.4        
@@ -50,6 +50,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        timeout: 40s       
+        timeout: 1s       
         script: |
           echo "테스트 출력"
